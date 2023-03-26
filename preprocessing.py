@@ -4,6 +4,8 @@ import re
 import pandas as pd
 import numpy as np
 import os
+from nltk.tokenize import word_tokenize
+
 
 #%%
 # are we working with all tasks?
@@ -37,12 +39,15 @@ def cleaner(tweet):
     tweet = tweet.replace("user", "")
     tweet = tweet.replace("semst", "")
     tweet = ' '.join([w for w in tweet.split() if len(w) > 2])
-    return tweet
+    tweet_tokens = word_tokenize(tweet)
+    filtered_words = [w for w in tweet_tokens]
+    return " ".join(filtered_words)
 
 # applying cleaner function to dataframe
 def cleanup(df):
     train_cleaned = df
     train_cleaned['tweet'] = train_cleaned['tweet'].apply(cleaner)
+    train_cleaned = train_cleaned[train_cleaned['tweet'].str.split().apply(len) > 2] # remove if tweet has =< 2 words
     return train_cleaned
 
 
