@@ -41,7 +41,6 @@ def cleaner(tweet):
 
 # applying cleaner function to dataframe
 def cleanup(df):
-    df = df.drop(index=0) # remove header row
     train_cleaned = df['tweet'].apply(cleaner)
     return train_cleaned
 
