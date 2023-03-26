@@ -19,13 +19,13 @@ TASKS = {
     'hillary': 12
 }
 
+# fetch files
 for data in TASKS.values():
-    if data == user_input:
-        task = list(dict.keys())[data-1]
-        print(task)
-        for filetype in ['train', 'val', 'test']:
-            globals()[f'{filetype}_text'] = requests.get(f'https://raw.githubusercontent.com/cardiffnlp/tweeteval/main/datasets/{task}/{filetype}_text.txt').text
-            globals()[f'{filetype}_label'] = requests.get(f'https://raw.githubusercontent.com/cardiffnlp/tweeteval/main/datasets/{task}/{filetype}_labels.txt').text
+    task = list(dict.keys())[data-1]
+    print(task)
+    for filetype in ['train', 'val', 'test']:
+        globals()[f'{filetype}_text'] = requests.get(f'https://raw.githubusercontent.com/cardiffnlp/tweeteval/main/datasets/{task}/{filetype}_text.txt').text
+        globals()[f'{filetype}_label'] = requests.get(f'https://raw.githubusercontent.com/cardiffnlp/tweeteval/main/datasets/{task}/{filetype}_labels.txt').text
 
 def process(label, text):
     tag = [int(sent) for sent in label.split("\n") if sent.isdigit()]
