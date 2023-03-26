@@ -41,8 +41,10 @@ def cleaner(tweet):
 
 # applying cleaner function to dataframe
 def cleanup(df):
-    train_cleaned = df['tweet'].apply(cleaner)
+    train_cleaned = df
+    train_cleaned['tweet'] = train_cleaned['tweet'].apply(cleaner)
     return train_cleaned
+
 
 # preparing dataframes for BERT processing
 def cleaned_df():
@@ -88,3 +90,5 @@ for task in enumerate(TASKS, start=1):
         cleaned_df.to_csv(f'cleaned_df/{task[1]}_{filetype}_cleaned.csv', index=False)
 
     print(f"{task[1]} dataframes cleaned + saved.")
+
+# %%
