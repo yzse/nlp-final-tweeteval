@@ -45,7 +45,7 @@ The model consists of an embedding layer, followed by an LSTM layer, and two den
 
 #### Bi-directional Model
 
-The addition of the bidirectional encoding allows the model to construct target-dependent representations of the tweet such that when a word is considered, both its left- and the right-hand side contect are taken into accout.
+The addition of the bi-directional encoding allows the model to construct target-dependent representations of the tweet such that when a word is considered, both its left- and the right-hand side contect are taken into account.
 
 #### Convolutional Model
 
@@ -53,11 +53,11 @@ A 1D convolutional layer with 64 filters and a kernel size of 4 is added to capt
 
 #### Transfer Learning Models
 
-The GloVe-twitter-25 and GloVe-twitter-100 models are pre-trained on large Twitter datasets, with 25 and 100 dimensions respectively. These models are trained on a huge amount of text data, including tweets, and hence they can capture the language nuances and context specific to social media platforms, such as hashtags, emoticons, and abbreviations, which are commonly used in tweets. By using pre-trained word embeddings like GloVe, the LSTM model can leverage the rich semantic information embedded in the word vectors to improve its performance in this text classification task.
+The GloVe-twitter-25 and GloVe-twitter-100 models are pre-trained on large Twitter datasets, with 25 and 100 dimensions, respectively. These models are trained on a huge amount of text data, including tweets, and hence they can capture the language nuances and context specific to social media platforms, such as hashtags, emoticons, and abbreviations, which are commonly used in tweets. By using pre-trained word embeddings like GloVe, the LSTM model can leverage the rich semantic information embedded in the word vectors to improve its performance in this text classification task.
 
 #### Fine-Tuning
 
-By using Keras Tuner's RandomSearch, we  explore a  range of hyperparameters for our Simple LSTM model and find the optimal set of hyperparameters that results in the best performance on the validation data.
+By using Keras Tuner's RandomSearch, we  explore a range of hyperparameters for our Simple LSTM model and find the optimal set of hyperparameters that results in the best performance on the validation data.
 
 #### Model Evaluation
 
