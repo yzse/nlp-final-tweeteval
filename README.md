@@ -52,24 +52,15 @@ In the BERT and BERTweet notebook, we compute precision, recall and F1 scores fo
 
 The table below shows the main results of our implementations. 
 
-| Metric                    | Climate | Feminist | Abortion | Atheism | Hillary | 
-
-|---------------------------|---------|----------|----------|---------|---------| 
-
-| Precision - Weighted avg   | 0.78    | 0.61     | 0.67     | 0.80    | 0.74    | 
-
-| Recall - Weighted avg     | 0.83    | 0.65     | 0.66     | 0.77    | 0.71    | 
-
-| F1 - Weighted avg         | 0.80    | 0.61     | 0.65     | 0.78    | 0.72    | 
-
-| F1 - Macro avg            | 0.55    | 0.49     | 0.55     | 0.69    | 0.58    | 
-
-| F1 - Class: In favor      | 0.89    | 0.77     | 0.75     | 0.84    | 0.78    | 
-
-| F1 - Class: Against       | 0       | 0.12     | 0.32     | 0.58    | 0.58    | 
-
-| F1 (Barbieri et al. 2022) | 0.45    | 0.44     | 0.53     | 0.71    | 0.68    | 
-
+| Metric                    | Climate | Feminist | Abortion | Atheism | Hillary |
+|---------------------------|---------|----------|----------|---------|---------|
+| Precision - Weigted avg   | 0.78    | 0.61     | 0.67     | 0.80    | 0.74    |
+| Recall - Weighted avg     | 0.83    | 0.65     | 0.66     | 0.77    | 0.71    |
+| F1 - Weighted avg         | 0.80    | 0.61     | 0.65     | 0.78    | 0.72    |
+| F1 - Macro avg            | 0.55    | 0.49     | 0.55     | 0.69    | 0.58    |
+| F1 - Class: In favor      | 0.89    | 0.77     | 0.75     | 0.84    | 0.78    |
+| F1 - Class: Against       | 0       | 0.12     | 0.32     | 0.58    | 0.58    |
+| F1 (Barbieri et al. 2022) | 0.45    | 0.44     | 0.53     | 0.71    | 0.68    |
  
 We can easily see there is a source of bias on the differential F1 scores per each class. Usually, as seen in the other implementations, we find very imbalanced classes. The majority class performs substantially better in terms of predictions. With the exception of `stance-atheism` and `stance-hillary`, the class ‘against’ shows poor performance, which lowers the macro averages for our score metrics. In the same line, these two are the ones showing better results in the F1 that considers a macro average only for the relevant classes. If we address class imbalance by considering the weighted averages, the results improve dramatically. 
 
