@@ -50,22 +50,13 @@ In the BERT and BERTweet notebook, we compute precision, recall and F1 scores fo
 
 The table below shows the main results of our implementations (TO COMPLETE WHEN HYPERPARAMETER TUNING IS DONE) 
 
-| Metric                           | Climate | Feminist | Abortion | Atheism | Hillary | 
-
-|----------------------------------|---------|----------|----------|---------|---------| 
-
-| Precision - Weighted avg          | 0.78    |          |          |         |         | 
-
-| Recall - Weighted avg            | 0.83    |          |          |         |         | 
-
-| F1 - Weighted avg                | 0.80    |          |          |         |         | 
-
-| F1 - Macro avg                   | 0.55    |          |          |         |         | 
-
-| F1 - Class: In favor             | 0.89    |          |          |         |         | 
-
-| F1 - Class: Against              | 0       |          |          |         |         | 
-
-| F1 (Barbieri et al. 2022)        | 0.45    |          |          |         |         | 
-
-| Global F1 (Barbieri et al. 2022) |                                               | 
+| Metric                           | Climate | Feminist | Abortion | Atheism | Hillary |
+|----------------------------------|---------|----------|----------|---------|---------|
+| Precision - Weigted avg          | 0.78    |          |          |         |         |
+| Recall - Weighted avg            | 0.83    |          |          |         |         |
+| F1 - Weighted avg                | 0.80    |          |          |         |         |
+| F1 - Macro avg                   | 0.55    |          |          |         |         |
+| F1 - Class: In favor             | 0.89    |          |          |         |         |
+| F1 - Class: Against              | 0       |          |          |         |         |
+| F1 (Barbieri et al. 2022)        | 0.45    |          |          |         |         |
+| Global F1 (Barbieri et al. 2022) |         |          |          |         |         |
