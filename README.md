@@ -12,6 +12,8 @@ This project uses the TweetEval dataset from Hugging Face to train three differe
 ### Exploratory Data Analysis
 In [EDA](https://github.com/yzse/nlp-final-tweeteval/blob/main/eda.ipynb), we do an exploratory analysis of the dataset to understand the patterns and trends.  First, we used distribution plots to show the percentage of each label in each subset.  For the stances, all subsets except for climate had the majority of it tweets being against the topic, where the tweets in climate had the majority in favor of the topic.  Understanding the balance of these labels can also allows us to reweight our models to prevent bias.  Next, we used t-SNE (t-Distributed Stochastic Neighbor Embedding) to create 2D and 3D plots to visualize word vectors in each subset.  Then, we created word frequency charts to show the top 20 words by frequency in each subset, as well as the top bigrams to show the top 20 pairs of words by frequency.  Finally, we generated network graphs to see how the topics themselves (abortion, atheism, climate or feminist) relate to the words in the subset.
 
+![plot](https://github.com/yzse/nlp-final-tweeteval/blob/main/abortion.png)
+
 ### Baseline Model
 The [Baseline](https://github.com/yzse/nlp-final-tweeteval/blob/main/baseline.ipynb) notebook contains further exploration of the four relevant datasets and builds a baseline model based on a dictionary of words in favor and against each topic. 
 
