@@ -37,3 +37,35 @@ This results in a global F1 score, as calculated in Barbieri et al. (2022), of 4
 
 ### BERT
 Finally, in [BERT and BERTweet](https://github.com/yzse/nlp-final-tweeteval/blob/main/BERT%20and%20BERTweet.ipynb), we try to apply the current state-of-the-art models to the classification problem. 
+
+As a first step, we obtain predictions using DistilBert, particularly the `DistilBertForSequenceClassification` pre-trained model, which is the most appropiate for our current task of multi-class classification. DistilBert “is a small, fast, cheap and light Transformer model trained by distilling BERT base. It has 40% less parameters than bert-base-uncased, runs 60% faster while preserving over 95% of BERT’s performances as measured on the GLUE language understanding benchmark” (see [documentation](https://huggingface.co/docs/transformers/model_doc/distilbert) for more information). 
+
+The finetuned implementation of DistilBert on one example dataset (`stances-feminist`) shows that the final precision (0.60), accuracy (0.57) and F1 (0.54) scores are still limited, and actually close to our own baseline model. 
+
+This is not unexpected. BERT is a pre-trained language model that has been shown to achieve state-of-the-art performance on a wide range of natural language processing tasks. However, BERT was pre-trained on a large corpus of general text, which may not be representative of the language used in tweets. Tweets are known to have unique characteristics that can make them more challenging to classify compared to other types of text. For example, tweets are often shorter, contain a lot of noise (such as typos and slang), and can have complex grammatical structures that are not found in more formal writing. Additionally, the use of hashtags, emojis, and other special characters in tweets can make it difficult for BERT to understand the context and sentiment of the tweet. Pre-processing and cleaning the tweets can help to mitigate some of these issues, but there is still a limit to the effectiveness of this approach. 
+
+ To address these challenges, researchers have developed specialized versions of BERT for use with social media data. For example, BERTweet is a variant of BERT that has been trained specifically on tweets and has been shown to outperform generic BERT on tweet classification tasks. For this reason, we base our main implementation on the pretrained BERTweet model for clasification.  
+
+In the BERT and BERTweet notebook, we compute precision, recall and F1 scores for each stance dataset, using weighted and macro averages, as well as consider those same scores for each class to account for biases due to class imbalance. In addition to this, following the methodology proposed by Barbieri et al. (2022), we compute an additional F1 score that considers an average of the F1 score of the relevant classes (in favor/against).  
+
+The table below shows the main results of our implementations (TO COMPLETE WHEN HYPERPARAMETER TUNING IS DONE) 
+
+| Metric                           | Climate | Feminist | Abortion | Atheism | Hillary | 
+
+|----------------------------------|---------|----------|----------|---------|---------| 
+
+| Precision - Weighted avg          | 0.78    |          |          |         |         | 
+
+| Recall - Weighted avg            | 0.83    |          |          |         |         | 
+
+| F1 - Weighted avg                | 0.80    |          |          |         |         | 
+
+| F1 - Macro avg                   | 0.55    |          |          |         |         | 
+
+| F1 - Class: In favor             | 0.89    |          |          |         |         | 
+
+| F1 - Class: Against              | 0       |          |          |         |         | 
+
+| F1 (Barbieri et al. 2022)        | 0.45    |          |          |         |         | 
+
+| Global F1 (Barbieri et al. 2022) |                                               | 
