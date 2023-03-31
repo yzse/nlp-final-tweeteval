@@ -252,3 +252,4 @@ results/checkpoint-75/rng_state.pth
 results/checkpoint-75/scheduler.pt
 results/checkpoint-75/trainer_state.json
 results/checkpoint-75/training_args.bin
+.ipynb_checkpoints
