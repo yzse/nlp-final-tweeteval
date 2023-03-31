@@ -29,10 +29,9 @@ The baseline model is a simple dictionary-based method that builds two dictionar
 * Feminist: Precision - 60.70, Recall - 58.63, Accuracy - 58.63, F1 - 55.89
 
 The model is not very sophisticated and poses challenges for under-represented classes and when there is little variation in the words used between tweets. 
+Generally, we see that when the model predicted a negative (positive) stance on abortion, atheism, feminism or Hillary Clinton (climate) it was often correct, but when it predicted a favorable (unfavorable) stance on them, it was often incorrect. Seeing as the macro averages generally perform much worse than the weighted averages, we can understand that the classifier is performing well on the majority classes, but poorly on the minority ones.
 
-* ADD METRICS DISCUSSION
-* ADD ERROR ANALYSIS
-* ADD BIAS DISCUSSION
+While our baseline model performed better than a random classifier (in general), to improve the predictions from the baseline model we must deal with class imbalance. Additionally, looking at the incorrect predictions, it is clear that using a dictionary-based method has many limitations, as the model cannot understand the full context of the tweet.
 
 ### Recurrent Neural Networks
 
