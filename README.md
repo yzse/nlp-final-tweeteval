@@ -37,6 +37,49 @@ This results in a global F1 score, as calculated in [Barbieri et al. (2022)](htt
 
 ### Recurrent Neural Networks
 
+Implementation of the Recurrent Neural Networks (RNN) model is divided into five separate notebooks, one for each stance: [rnn_abortion](https://github.com/yzse/nlp-final-tweeteval/blob/main/rnn_abortion.ipynb), [rnn_atheism](https://github.com/yzse/nlp-final-tweeteval/blob/main/rnn_atheism.ipynb), [rnn_climate](https://github.com/yzse/nlp-final-tweeteval/blob/main/rnn_climate.ipynb), [rnn_feminist](https://github.com/yzse/nlp-final-tweeteval/blob/main/rnn_feminist.ipynb), and [rnn_hillary](https://github.com/yzse/nlp-final-tweeteval/blob/main/rnn_hillary.ipynb). Eight RNN models are fitted to the dataset with each model employing a Long Short-Term Memory (LSTM) network, a type of RNN used to process sequential data. LSTMs have been proven to be effective in various text classification tasks due to its ability to capture long-term dependencies and handle variable-length sequences. In this context, implementing LSTM for text classification involves training a model to learn the relationships between the input text and the corresponding output labels. 
+
+#### Simple LSTM Model
+
+The model consists of an embedding layer, followed by an LSTM layer, and two dense layers. The Embedding layer learns a dense vector representation (embedding) for each word in the input text, which is then fed to the LSTM layer. 
+
+#### Bi-directional Model
+
+The addition of the bidirectional encoding allows the model to construct target-dependent representations of the tweet such that when a word is considered, both its left- and the right-hand side contect are taken into accout.
+
+#### Convolutional Model
+
+A 1D convolutional layer with 64 filters and a kernel size of 4 is added to capture local patterns in the sequence. The output of the convolutional layer is then passed through a GlobalMaxPool1D layer, which takes the maximum value across all feature maps, and reduces the output to a fixed size vector. 
+
+#### Transfer Learning Models
+
+The GloVe-twitter-25 and GloVe-twitter-100 models are pre-trained on large Twitter datasets, with 25 and 100 dimensions respectively. These models are trained on a huge amount of text data, including tweets, and hence they can capture the language nuances and context specific to social media platforms, such as hashtags, emoticons, and abbreviations, which are commonly used in tweets. By using pre-trained word embeddings like GloVe, the LSTM model can leverage the rich semantic information embedded in the word vectors to improve its performance in  this text classification task.
+
+#### Fine-Tuning
+
+By using Keras Tuner's RandomSearch, we  explore a  range of hyperparameters for our Simple LSTM model and find the optimal set of hyperparameters that results in the best performance on the validation data.
+
+#### Model Evaluation
+
+Despite model improvements, the ``Simple LSTM network``  outperforms all other LSTM variants. This is due to the fact that more complex models like Bi-directional LSTMs or stacked LSTMs overfit to the majority class and not perform well on the minority classes. This is further exacerbated by the overall small sample size of the dataset. In [rnn_abortion](https://github.com/yzse/nlp-final-tweeteval/blob/main/rnn_abortion.ipynb), the ``Experimentation LSTM network` --- a deep neural network with many layers --- exhibits this phenomenon. In this example, the model classifies all texts as `against`, the majority class for the `abortion` dataset. 
+
+On the other hand, a simpler LSTM model with fewer parameters may not overfit to the majority class and instead learn to generalize better to the minority classes. Therefore, a simple LSTM model may perform better in the presence of class imbalance because it is less likely to overfit to the majority class and better generalize to the minority classes.
+
+Results for the Simple LSTM are outputted below:
+
+
+| Metric                    | Climate | Feminist | Abortion | Atheism | Hillary |
+|---------------------------|---------|----------|----------|---------|---------|
+| Precision - Weigted avg   | 0.71    | 0.57     | 0.63     | 0.66    | 0.59    |
+| Recall - Weighted avg     | 0.69    | 0.52     | 0.56     | 0.63    | 0.50    |
+| F1 - Weighted avg         | 0.69    | 0.53     | 0.58     | 0.64    | 0.49    |
+| F1 - Macro avg            | 0.51    | 0.46     | 0.47     | 0.46    | 0.41    |
+| F1 - Class: In favor      | 0.79    | 0.39     | 0.31     | 0.20    | 0.14    |
+| F1 - Class: Against       | 0.29    | 0.61     | 0.69     | 0.77    | 0.57    |
+
+One consistent observation across all topics was that the majority class, whether it was `in favour` or `against`, significantly outperformed the corresponding minority class. The unequal distribution of classes in the training data creates a bias towards predictions on the majority class, as it has more examples to learn from. As a result, the model may not perform well on the minority class, as it does not have enough examples to learn from.
+
+
 ### BERT
 Finally, in [BERT and BERTweet](https://github.com/yzse/nlp-final-tweeteval/blob/main/BERT%20and%20BERTweet.ipynb), we try to apply the current state-of-the-art models to the classification problem. 
 
