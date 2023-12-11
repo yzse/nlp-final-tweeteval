@@ -1,5 +1,4 @@
 # Advanced Methods in Natural Language Processing: Final Project
-#### Authors: Shaney Sze, Pearl Herrero, Daniela De los Santos, Giovanna Chaves
 
 Improving the baseline multi-class classification model of TweetEval.
 
